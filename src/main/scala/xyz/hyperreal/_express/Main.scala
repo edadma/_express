@@ -24,7 +24,7 @@ object Main extends App {
       .json(OptionsJson().setLimit("5mb").setStrict(false))
       .asInstanceOf[RequestHandler[ParamsDictionary, _, _, Query]])
 
-  app.use[ParamsDictionary, js.Any, js.Any, ParsedQs]("/welcome".asInstanceOf[PathParams], WelcomeController.Router)
+  app.use[ParamsDictionary, js.Any, js.Any, ParsedQs]("/welcome", WelcomeController.router)
 
   val errorHandler: ErrorRequestHandler[ParamsDictionary, js.Any, js.Any, ParsedQs] = (err, req, res, _) =>
     println("the error", err)
