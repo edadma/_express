@@ -1,8 +1,8 @@
 package xyz.hyperreal._express
 
-import typings.bodyParser.mod.OptionsJson
-
 import scalajs.js
+
+import typings.bodyParser.mod.OptionsJson
 import typings.express.{mod => expressMod}
 import typings.expressServeStaticCore.mod._
 import typings.qs.mod.ParsedQs
@@ -25,6 +25,11 @@ object Main extends App {
       .asInstanceOf[RequestHandler[ParamsDictionary, _, _, Query]])
 
   app.use[ParamsDictionary, js.Any, js.Any, ParsedQs]("/welcome".asInstanceOf[PathParams], WelcomeController.Router)
+
+  val errorHandler: ErrorRequestHandler[ParamsDictionary, js.Any, js.Any, ParsedQs] = (err, req, res, _) =>
+    println("the error", err)
+
+  app.use(errorHandler.asInstanceOf[RequestHandlerParams[ParamsDictionary, js.Any, js.Any, ParsedQs]])
 
   app.listen(port, () => println(s"Listening at http://localhost:$port/"))
 

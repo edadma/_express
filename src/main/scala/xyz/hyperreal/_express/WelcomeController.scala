@@ -10,7 +10,7 @@ object WelcomeController {
   val Router: Router = expressMod.Router()
 
   val Index: RequestHandler[Unit, String, Unit, Unit] =
-    (_, res, _) => res.send("Hello, World!")
+    (req, res, next) => res.send("Hello, World!")
 
   trait HasName extends js.Object {
     val name: js.UndefOr[String]
