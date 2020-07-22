@@ -16,11 +16,15 @@ object WelcomeController {
     val name: js.UndefOr[String]
   }
 
-  private val name: RequestHandler[HasName, String, Unit, Unit] = (req, res, next) =>
+  private val getName: RequestHandler[HasName, String, Unit, Unit] = (req, res, next) =>
     res.send(s"Hello, ${req.params.name.getOrElse("No Name")}!")
+
+  private val getId: RequestHandler[js.Dictionary[String], String, Unit, Unit] = (req, res, next) =>
+    res.send(s"ID: ${req.params get "id" getOrElse "No ID"}!")
 
   router
     .get[Unit, String, Unit, Unit]("/", index)
-    .get[HasName, String, Unit, Unit]("/:name", name)
+    .get[HasName, String, Unit, Unit]("/name/:name", getName)
+    .get[js.Dictionary[String], String, Unit, Unit]("/id/:id", getId)
 
 }

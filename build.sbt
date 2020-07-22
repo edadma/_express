@@ -45,8 +45,8 @@ npmDependencies in Compile ++= Seq(
   "helmet" -> "3.23.3",
   "@types/helmet" -> "0.0.47",
 
-//  "pg" -> "8.3.0",
-//  "@types/pg" -> "7.14.4"
+  "pg" -> "8.3.0",
+  "@types/pg" -> "7.14.4"
 )
 
 libraryDependencies ++= Seq(
