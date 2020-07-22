@@ -14,6 +14,10 @@ resolvers += "Typesafe Repository" at "https://repo.typesafe.com/typesafe/releas
 
 resolvers += "Hyperreal Repository" at "https://dl.bintray.com/edadma/maven"
 
+resolvers += "Vinctus Repository" at "https://maven.pkg.github.com/vinctustech"
+
+externalResolvers += "OQL" at "https://maven.pkg.github.com/vinctustech/oql"
+
 enablePlugins(ScalaJSPlugin)
 
 enablePlugins(ScalablyTypedConverterPlugin)
@@ -39,7 +43,10 @@ npmDependencies in Compile ++= Seq(
   "@types/compression" -> "1.7.0",
 
   "helmet" -> "3.23.3",
-  "@types/helmet" -> "0.0.47"
+  "@types/helmet" -> "0.0.47",
+
+//  "pg" -> "8.3.0",
+//  "@types/pg" -> "7.14.4"
 )
 
 libraryDependencies ++= Seq(
@@ -49,6 +56,10 @@ libraryDependencies ++= Seq(
 
 libraryDependencies ++= Seq(
   "org.scala-js" %%% "scalajs-java-time" % "1.0.0"
+)
+
+libraryDependencies ++= Seq(
+  "com.vinctus" %%% "-vinctus-oql" % "0.1.0-q.beta.7.9-i.alpha.3"
 )
 
 mainClass in (Compile, run) := Some( "xyz.hyperreal." + name.value.replace('-', '_') + ".Main" )
