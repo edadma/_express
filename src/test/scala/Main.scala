@@ -1,3 +1,3 @@
-package xyz.hyperreal._scalajs
+package com.vinctus._scalajs
 
 object Main extends App {}

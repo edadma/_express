@@ -6,7 +6,7 @@ scalaVersion := "2.13.3"
 
 scalacOptions ++= Seq( "-deprecation", "-feature", "-unchecked", "-language:postfixOps", "-language:implicitConversions", "-language:existentials")
 
-organization := "xyz.hyperreal"
+organization := "com.vinctus"
 
 Global / onChangedBuildSource := ReloadOnSourceChanges
 
@@ -62,7 +62,7 @@ libraryDependencies ++= Seq(
   "com.vinctus" %%% "-vinctus-oql" % "0.1.0-q.beta.7.9-i.alpha.3"
 )
 
-mainClass in (Compile, run) := Some( "xyz.hyperreal." + name.value.replace('-', '_') + ".Main" )
+mainClass in (Compile, run) := Some( "com.vinctus." + name.value.replace('-', '_') + ".Main" )
 
 publishMavenStyle := true
 

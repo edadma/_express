@@ -1,4 +1,4 @@
-package xyz.hyperreal._scalajs
+package com.vinctus._scalajs
 
 import org.scalatest._
 

@@ -1,4 +1,4 @@
-package xyz.hyperreal._express
+package com.vinctus._express
 
 import scalajs.js
 
