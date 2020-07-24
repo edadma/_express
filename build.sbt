@@ -46,7 +46,10 @@ npmDependencies in Compile ++= Seq(
   "@types/helmet" -> "0.0.47",
 
   "pg" -> "8.3.0",
-  "@types/pg" -> "7.14.4"
+  "@types/pg" -> "7.14.4",
+
+  "jsonwebtoken" -> "8.5.1",
+  "@types/jsonwebtoken" -> "8.5.0"
 )
 
 libraryDependencies ++= Seq(

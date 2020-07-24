@@ -10,8 +10,11 @@ import typings.cors.{mod => corsMod}
 import typings.bodyParser.{mod => bodyParserMod}
 import typings.compression.{mod => compressionMod}
 import typings.helmet.{mod => helmetMod}
+import typings.pg.mod.types.setTypeParser
 
 object Main extends App {
+
+  setTypeParser(20, (s: Any) => s.asInstanceOf[String].toDouble)
 
   val app = expressMod.^()
   val port = 8000
@@ -25,17 +28,16 @@ object Main extends App {
       .asInstanceOf[RequestHandler[ParamsDictionary, _, _, Query]])
 
   app.use[ParamsDictionary, js.Any, js.Any, ParsedQs]("/welcome", WelcomeController.router)
+  app.use[ParamsDictionary, js.Any, js.Any, ParsedQs]("/auth", AuthController.router)
 
-  val errorHandler: ErrorRequestHandler[ParamsDictionary, js.Any, js.Any, ParsedQs] = (err, req, res, _) =>
-    println("the error", err)
+  val errorHandler: ErrorRequestHandler[ParamsDictionary, js.Any, js.Any, ParsedQs] =
+    (err, req, res, _) => {
+      println(err)
+      res.status(500).send("server error")
+    }
 
   app.use(errorHandler.asInstanceOf[RequestHandlerParams[ParamsDictionary, js.Any, js.Any, ParsedQs]])
 
   app.listen(port, () => println(s"Listening at http://localhost:$port/"))
 
 }
-
-//  val requestHandler: RequestHandler[js.Dictionary[String], String, String, String] = (req, res, _) =>
-//    res.send(s"name: ${req.params("name")}")
-
-//  app.get[js.Dictionary[String], String, String, String]("/:name".asInstanceOf[PathParams], requestHandler)
