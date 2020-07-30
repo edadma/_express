@@ -1,13 +1,13 @@
-package com.vinctus._express
+package com.vinctus._express.controller
 
-import scalajs.js
+import typings.express.mod.Router
+import typings.expressServeStaticCore.mod.{RequestHandler, Router}
 
-import typings.express.{mod => expressMod}
-import typings.expressServeStaticCore.mod._
+import scala.scalajs.js
 
-object WelcomeController {
+object Welcome {
 
-  val router: Router = expressMod.Router()
+  val router: Router = Router()
 
   private val index: RequestHandler[Unit, String, Unit, Unit] =
     (_, res, _) => res.send("Hello, World!")

@@ -1,4 +1,4 @@
-package com.vinctus._express
+package com.vinctus._express.error
 
 object ErrorCode {
 

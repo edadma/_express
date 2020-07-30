@@ -1,4 +1,4 @@
-package com.vinctus._express
+package com.vinctus._express.service
 
 import typings.jsonwebtoken.mod.{Algorithm, SignOptions, VerifyOptions}
 import typings.jsonwebtoken.{mod => jwt}

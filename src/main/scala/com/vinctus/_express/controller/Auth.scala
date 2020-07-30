@@ -1,11 +1,13 @@
-package com.vinctus._express
+package com.vinctus._express.controller
 
-import typings.express.{mod => expressMod}
-import typings.expressServeStaticCore.mod._
+import com.vinctus._express.error.{ErrorCode, NotAuthenticated, NotFound}
+import com.vinctus._express.service.JWT
+import typings.express.mod.Router
+import typings.expressServeStaticCore.mod.{RequestHandler, Router}
 
 import scala.scalajs.js
 
-object AuthController {
+object Auth {
 
   case class AdminAccount(
       id: Int,
@@ -18,7 +20,7 @@ object AuthController {
       AdminAccount(1, "user@example.com", "the-password")
     )
 
-  val router: Router = expressMod.Router()
+  val router: Router = Router()
 
   trait LoginReqBody extends js.Object {
     val email: String

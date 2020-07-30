@@ -1,7 +1,6 @@
 package com.vinctus._express
 
 import scalajs.js
-
 import typings.bodyParser.mod.OptionsJson
 import typings.express.{mod => expressMod}
 import typings.expressServeStaticCore.mod._
@@ -27,8 +26,8 @@ object Main extends App {
       .json(OptionsJson().setLimit("5mb").setStrict(false))
       .asInstanceOf[RequestHandler[ParamsDictionary, _, _, Query]])
 
-  app.use[ParamsDictionary, js.Any, js.Any, ParsedQs]("/welcome", WelcomeController.router)
-  app.use[ParamsDictionary, js.Any, js.Any, ParsedQs]("/auth", AuthController.router)
+  app.use[ParamsDictionary, js.Any, js.Any, ParsedQs]("/welcome", controller.Welcome.router)
+  app.use[ParamsDictionary, js.Any, js.Any, ParsedQs]("/auth", controller.Auth.router)
 
   val errorHandler: ErrorRequestHandler[ParamsDictionary, js.Any, js.Any, ParsedQs] =
     (err, req, res, _) => {
